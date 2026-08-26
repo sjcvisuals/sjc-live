@@ -1,36 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SJC.live
 
-## Getting Started
+Marketing site for SJC / SJCVisuals Ltd — virtual production tools, media-server programming, and client-side VP supervision.
 
-First, run the development server:
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Deployment**: Railway (Docker)
+
+## Local Development
+
+### Prerequisites
+
+- Node.js 22+
+- npm 10+
+
+### Setup
 
 ```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `NEXT_PUBLIC_CONTACT_EMAIL` | No | Email address for the contact form. If not set, the form displays a TODO message. |
 
-## Learn More
+Create a `.env.local` file for local development:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+NEXT_PUBLIC_CONTACT_EMAIL=your-email@example.com
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Available Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
 
-## Deploy on Vercel
+## Railway Deployment (Preview)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This repo is configured for Railway deployment via Dockerfile.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Deploy a Preview Service
+
+1. **Connect Repository**
+   - Go to [railway.app](https://railway.app) and create a new project
+   - Select "Deploy from GitHub repo"
+   - Connect the `sjcvisuals/sjc-live` repository
+   - Select this PR branch for preview deployment
+
+2. **Configure Environment**
+   - In Railway dashboard, go to your service's Variables tab
+   - Add `NEXT_PUBLIC_CONTACT_EMAIL` with your contact email address
+
+3. **Deploy**
+   - Railway will automatically build and deploy using the Dockerfile
+   - Once deployed, you'll get a `*.railway.app` URL
+
+4. **Share Preview URL**
+   - Copy the `https://your-service-name.railway.app` URL
+   - Share with stakeholders for review
+   - This preview URL is completely separate from production
+
+### Preview Environment Notes
+
+- The preview deployment uses Railway's default `*.railway.app` domain
+- No custom domain configuration needed for preview
+- The site's canonical URL will be the preview host
+- All functionality works the same as production
+
+## ⚠️ Custom Domain (sjc.live) — NOT YET
+
+**DO NOT attach the custom domain `sjc.live` to any Railway service.**
+
+The domain currently points to the existing Wix site and must remain there until Spencer explicitly approves the cutover.
+
+### Later: Custom Domain Setup
+
+When ready to go live (after approval):
+
+1. In Railway dashboard, go to Settings → Domains
+2. Add `sjc.live` as a custom domain
+3. Update DNS records as instructed by Railway
+4. Verify the domain in Railway
+
+This is documented here for future reference only. **Do not perform these steps without explicit approval.**
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx      # Root layout with header/footer
+│   ├── page.tsx        # Home page
+│   ├── work/           # Work/credits page
+│   ├── services/       # Services page
+│   └── contact/        # Contact page
+├── components/
+│   ├── Header.tsx      # Site header with navigation
+│   ├── Footer.tsx      # Site footer with SIGNL link
+│   ├── LEDVolumeHero.tsx  # Canvas-based LED grid animation
+│   ├── WorkCard.tsx    # Credit card component
+│   ├── ServiceCard.tsx # Service card component
+│   └── ContactForm.tsx # Contact form with mailto fallback
+└── lib/
+    └── data.ts         # Credits and services data
+```
+
+## Content Guidelines
+
+### Credits
+
+All credits in `src/lib/data.ts` are factual and verified:
+- Spencer Chase / SJC work is credited as "VP Supervisor" unless otherwise noted
+- Previous Lux Machina work is clearly marked as "Engine TD (Lux Machina)"
+- No invented clients or claims
+
+### SIGNL
+
+SIGNL ([signl.store](https://www.signl.store)) is a separate product. It appears only as:
+- Small header link
+- Small footer link
+
+It is intentionally **not** featured in the hero or main content.
+
+## Accessibility
+
+- Semantic HTML with proper heading hierarchy
+- ARIA labels on interactive elements
+- Skip link for keyboard navigation
+- `prefers-reduced-motion` respected for animations
+- Focus indicators on all interactive elements
+- Proper color contrast ratios
+
+## License
+
+Copyright © SJCVisuals Ltd. All rights reserved.
