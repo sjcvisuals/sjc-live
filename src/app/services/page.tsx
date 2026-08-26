@@ -13,17 +13,20 @@ export default function ServicesPage() {
   return (
     <>
       <section
-        className="py-24 border-b border-border"
+        className="py-24 border-b border-border tech-grid"
         aria-labelledby="services-hero"
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <header className="max-w-3xl">
-            <p className="text-sm font-mono text-led-cyan uppercase tracking-widest mb-4">
-              Services
-            </p>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-8 h-px bg-accent" aria-hidden="true" />
+              <p className="text-xs font-mono text-text-muted uppercase tracking-[0.2em]">
+                Services
+              </p>
+            </div>
             <h1
               id="services-hero"
-              className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground"
+              className="text-4xl sm:text-5xl font-mono font-bold tracking-tight text-foreground leading-[1.1]"
             >
               What a producer or
               <br />
@@ -38,14 +41,14 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-surface" aria-labelledby="services-list">
+      <section className="py-16 bg-surface/50" aria-labelledby="services-list">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 id="services-list" className="sr-only">
             Service offerings
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <ServiceCard key={service.id} service={service} />
+            {services.map((service, index) => (
+              <ServiceCard key={service.id} service={service} index={index} />
             ))}
           </div>
         </div>
@@ -57,110 +60,106 @@ export default function ServicesPage() {
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <header className="mb-12">
-            <h2
-              id="how-it-works"
-              className="text-sm font-mono text-text-muted uppercase tracking-widest mb-2"
-            >
-              How It Works
-            </h2>
-            <p className="text-2xl font-semibold text-foreground">
+            <div className="flex items-center gap-4 mb-3">
+              <span className="w-8 h-px bg-accent" aria-hidden="true" />
+              <h2
+                id="how-it-works"
+                className="text-xs font-mono text-text-muted uppercase tracking-[0.2em]"
+              >
+                Process
+              </h2>
+            </div>
+            <p className="text-2xl font-mono font-semibold text-foreground">
               Engagement model
             </p>
           </header>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-lg font-semibold text-foreground mb-4">
+            <div className="p-6 border border-border rounded bg-surface/30">
+              <h3 className="text-lg font-mono font-semibold text-foreground mb-6 flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true" />
                 For Productions
               </h3>
               <ul className="space-y-4 text-text-muted" role="list">
-                <li className="flex gap-3">
+                <li className="flex gap-4">
                   <span
-                    className="shrink-0 w-6 h-6 flex items-center justify-center bg-surface-elevated rounded text-xs font-mono text-led-cyan"
+                    className="shrink-0 w-6 h-6 flex items-center justify-center bg-accent/10 rounded text-xs font-mono text-accent border border-accent/20"
                     aria-hidden="true"
                   >
-                    1
+                    01
                   </span>
                   <span>
-                    <strong className="text-foreground">Discovery call</strong>{" "}
-                    — understand your VP requirements, timeline, and existing
-                    vendor relationships
+                    <strong className="text-foreground font-mono">Discovery</strong>{" "}
+                    — VP requirements, timeline, existing vendor relationships
                   </span>
                 </li>
-                <li className="flex gap-3">
+                <li className="flex gap-4">
                   <span
-                    className="shrink-0 w-6 h-6 flex items-center justify-center bg-surface-elevated rounded text-xs font-mono text-led-cyan"
+                    className="shrink-0 w-6 h-6 flex items-center justify-center bg-accent/10 rounded text-xs font-mono text-accent border border-accent/20"
                     aria-hidden="true"
                   >
-                    2
+                    02
                   </span>
                   <span>
-                    <strong className="text-foreground">Scope and quote</strong>{" "}
-                    — define deliverables, whether tools, prep, supervision, or
-                    a combination
+                    <strong className="text-foreground font-mono">Scope</strong>{" "}
+                    — define deliverables: tools, prep, supervision, or combination
                   </span>
                 </li>
-                <li className="flex gap-3">
+                <li className="flex gap-4">
                   <span
-                    className="shrink-0 w-6 h-6 flex items-center justify-center bg-surface-elevated rounded text-xs font-mono text-led-cyan"
+                    className="shrink-0 w-6 h-6 flex items-center justify-center bg-accent/10 rounded text-xs font-mono text-accent border border-accent/20"
                     aria-hidden="true"
                   >
-                    3
+                    03
                   </span>
                   <span>
-                    <strong className="text-foreground">Delivery</strong> —
-                    pre-production prep, on-set support, or ongoing servicing as
-                    agreed
+                    <strong className="text-foreground font-mono">Delivery</strong>{" "}
+                    — pre-production prep, on-set support, or ongoing servicing
                   </span>
                 </li>
               </ul>
             </div>
 
-            <div>
-              <h3 className="text-lg font-semibold text-foreground mb-4">
+            <div className="p-6 border border-border rounded bg-surface/30">
+              <h3 className="text-lg font-mono font-semibold text-foreground mb-6 flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true" />
                 For Vendors
               </h3>
               <ul className="space-y-4 text-text-muted" role="list">
-                <li className="flex gap-3">
+                <li className="flex gap-4">
                   <span
-                    className="shrink-0 w-6 h-6 flex items-center justify-center bg-surface-elevated rounded text-xs font-mono text-led-cyan"
+                    className="shrink-0 w-6 h-6 flex items-center justify-center bg-accent/10 rounded text-xs font-mono text-accent border border-accent/20"
                     aria-hidden="true"
                   >
-                    1
+                    01
                   </span>
                   <span>
-                    <strong className="text-foreground">
-                      Technical requirements
-                    </strong>{" "}
-                    — understand what tools or showfile work you need support
-                    with
+                    <strong className="text-foreground font-mono">Requirements</strong>{" "}
+                    — tools or showfile work you need support with
                   </span>
                 </li>
-                <li className="flex gap-3">
+                <li className="flex gap-4">
                   <span
-                    className="shrink-0 w-6 h-6 flex items-center justify-center bg-surface-elevated rounded text-xs font-mono text-led-cyan"
+                    className="shrink-0 w-6 h-6 flex items-center justify-center bg-accent/10 rounded text-xs font-mono text-accent border border-accent/20"
                     aria-hidden="true"
                   >
-                    2
+                    02
                   </span>
                   <span>
-                    <strong className="text-foreground">
-                      Day rate or project
-                    </strong>{" "}
-                    — flexible engagement based on your project timeline
+                    <strong className="text-foreground font-mono">Engagement</strong>{" "}
+                    — day rate or project-based, flexible to your timeline
                   </span>
                 </li>
-                <li className="flex gap-3">
+                <li className="flex gap-4">
                   <span
-                    className="shrink-0 w-6 h-6 flex items-center justify-center bg-surface-elevated rounded text-xs font-mono text-led-cyan"
+                    className="shrink-0 w-6 h-6 flex items-center justify-center bg-accent/10 rounded text-xs font-mono text-accent border border-accent/20"
                     aria-hidden="true"
                   >
-                    3
+                    03
                   </span>
                   <span>
-                    <strong className="text-foreground">Handoff</strong> —
-                    deliverables with documentation, ready for your team to
-                    deploy
+                    <strong className="text-foreground font-mono">Handoff</strong>{" "}
+                    — deliverables with documentation, ready for your team
                   </span>
                 </li>
               </ul>
@@ -169,72 +168,36 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-16 border-t border-border bg-surface">
+      <section className="py-16 border-t border-border bg-surface/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h2 className="text-sm font-mono text-text-muted uppercase tracking-widest mb-4">
-              What SJC Is Not
-            </h2>
-            <div className="space-y-4">
-              <p className="text-text-muted">
-                To be clear about scope and avoid misaligned expectations:
-              </p>
-              <ul className="space-y-2 text-text-muted" role="list">
-                <li className="flex items-start gap-3">
-                  <span className="text-led-magenta" aria-hidden="true">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-8 h-px bg-status-error" aria-hidden="true" />
+              <h2 className="text-xs font-mono text-text-muted uppercase tracking-[0.2em]">
+                Out of Scope
+              </h2>
+            </div>
+            <p className="text-2xl font-mono font-semibold text-foreground mb-6">
+              What SJC does not do
+            </p>
+            <div className="space-y-3">
+              {[
+                { label: "Content studio", desc: "No environments, assets, or creative content" },
+                { label: "VAD packages", desc: "No virtual art department services" },
+                { label: "Camera house", desc: "No camera rentals or tracking systems" },
+                { label: "Volume operator", desc: "No stage, no LED wall, no VP facility" },
+                { label: "Client-review loops", desc: "Technical delivery, not creative iteration" },
+              ].map((item) => (
+                <div key={item.label} className="flex items-start gap-4 p-3 border border-border rounded bg-background">
+                  <span className="shrink-0 w-5 h-5 flex items-center justify-center text-status-error text-xs" aria-hidden="true">
                     ✕
                   </span>
-                  <span>
-                    <strong className="text-foreground">
-                      Not a content studio
-                    </strong>{" "}
-                    — we don&apos;t create environments, assets, or creative
-                    content
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-led-magenta" aria-hidden="true">
-                    ✕
-                  </span>
-                  <span>
-                    <strong className="text-foreground">Not VAD packages</strong>{" "}
-                    — no virtual art department services or environment design
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-led-magenta" aria-hidden="true">
-                    ✕
-                  </span>
-                  <span>
-                    <strong className="text-foreground">
-                      Not a camera house
-                    </strong>{" "}
-                    — no camera rentals, tracking systems, or related hardware
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-led-magenta" aria-hidden="true">
-                    ✕
-                  </span>
-                  <span>
-                    <strong className="text-foreground">
-                      Not a volume operator
-                    </strong>{" "}
-                    — no stage, no LED wall, no full VP facility
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-led-magenta" aria-hidden="true">
-                    ✕
-                  </span>
-                  <span>
-                    <strong className="text-foreground">
-                      Not endless client-review work
-                    </strong>{" "}
-                    — technical delivery, not creative iteration
-                  </span>
-                </li>
-              </ul>
+                  <div>
+                    <span className="font-mono text-foreground">{item.label}</span>
+                    <span className="text-text-muted"> — {item.desc}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -242,19 +205,24 @@ export default function ServicesPage() {
 
       <section className="py-16 border-t border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 p-8 border border-border rounded-lg bg-surface">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 p-8 border border-border rounded bg-surface/30 glow-border">
             <div>
-              <h2 className="text-xl font-semibold text-foreground">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-2 h-2 rounded-full bg-status-active" aria-hidden="true" />
+                <span className="text-xs font-mono text-text-dim uppercase tracking-widest">
+                  Available
+                </span>
+              </div>
+              <h2 className="text-xl font-mono font-semibold text-foreground">
                 Ready to discuss your project?
               </h2>
               <p className="mt-1 text-text-muted">
-                Let&apos;s talk about how SJC can support your virtual
-                production.
+                Let&apos;s talk about how SJC can support your virtual production.
               </p>
             </div>
             <Link
               href="/contact"
-              className="shrink-0 inline-flex items-center justify-center px-6 py-3 text-sm font-medium bg-led-cyan text-background rounded-md hover:bg-led-cyan/90 transition-colors focus-ring"
+              className="shrink-0 inline-flex items-center justify-center px-6 py-3 text-sm font-mono uppercase tracking-wider bg-accent text-background rounded hover:bg-accent-bright transition-colors focus-ring"
             >
               Get in Touch
             </Link>

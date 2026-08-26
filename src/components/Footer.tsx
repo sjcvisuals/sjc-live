@@ -8,59 +8,61 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div>
-            <Link href="/" className="text-lg font-bold tracking-tight">
-              SJC
+            <Link href="/" className="inline-flex items-center gap-2">
+              <span className="text-lg font-bold tracking-tight font-mono">SJC</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-status-active" aria-hidden="true" />
             </Link>
-            <p className="mt-2 text-sm text-text-muted max-w-xs">
-              Virtual production tools, media-server programming, and client-side VP supervision.
+            <p className="mt-4 text-sm text-text-muted max-w-xs font-mono leading-relaxed">
+              VP tools. Media-server programming. Client-side supervision.
             </p>
-            <p className="mt-4 text-xs text-text-dim font-mono">
+            <p className="mt-4 text-xs text-text-dim font-mono uppercase tracking-widest">
               sjc.live
             </p>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-text-muted">
+            <h3 className="text-xs font-mono uppercase tracking-widest text-text-dim mb-4">
               Navigation
             </h3>
-            <nav aria-label="Footer navigation" className="mt-4 space-y-2">
+            <nav aria-label="Footer navigation" className="space-y-2">
               <Link
                 href="/work"
-                className="block text-sm text-text-muted hover:text-foreground transition-colors focus-ring rounded"
+                className="block text-sm font-mono text-text-muted hover:text-accent transition-colors focus-ring rounded"
               >
-                Work
+                /work
               </Link>
               <Link
                 href="/services"
-                className="block text-sm text-text-muted hover:text-foreground transition-colors focus-ring rounded"
+                className="block text-sm font-mono text-text-muted hover:text-accent transition-colors focus-ring rounded"
               >
-                Services
+                /services
               </Link>
               <Link
                 href="/contact"
-                className="block text-sm text-text-muted hover:text-foreground transition-colors focus-ring rounded"
+                className="block text-sm font-mono text-text-muted hover:text-accent transition-colors focus-ring rounded"
               >
-                Contact
+                /contact
               </Link>
             </nav>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-text-muted">
+            <h3 className="text-xs font-mono uppercase tracking-widest text-text-dim mb-4">
               Location
             </h3>
-            <p className="mt-4 text-sm text-text-muted">
-              London area / UK
+            <p className="text-sm font-mono text-text-muted">
+              London / UK
             </p>
-            <div className="mt-6">
+            <div className="mt-6 pt-4 border-t border-border">
               <a
                 href="https://www.signl.store"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs font-mono text-text-dim hover:text-text-muted transition-colors focus-ring rounded"
+                className="inline-flex items-center gap-2 text-xs font-mono text-text-dim hover:text-text-muted transition-colors focus-ring rounded uppercase tracking-wider"
                 aria-label="SIGNL Store - Wireless OSC Controller (opens in new tab)"
               >
-                SIGNL — Wireless OSC Controller →
+                <span className="w-1 h-1 rounded-full bg-accent/50" aria-hidden="true" />
+                SIGNL — OSC Controller ↗
               </a>
             </div>
           </div>
@@ -68,11 +70,11 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-text-dim">
-              © {currentYear} SJCVisuals Ltd. All rights reserved.
-            </p>
             <p className="text-xs text-text-dim font-mono">
-              Built for virtual production
+              © {currentYear} SJCVisuals Ltd
+            </p>
+            <p className="text-xs text-text-dim font-mono uppercase tracking-widest">
+              Virtual Production Tooling
             </p>
           </div>
         </div>

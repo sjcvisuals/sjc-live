@@ -8,60 +8,74 @@ interface WorkCardProps {
 
 export function WorkCard({ credit, showLink = false }: WorkCardProps) {
   const eraStyles = {
-    sjc: "border-led-cyan/30 hover:border-led-cyan/50",
-    transition: "border-led-magenta/30 hover:border-led-magenta/50",
+    sjc: "border-accent/30 hover:border-accent/50 hover:shadow-[0_0_30px_-10px_rgba(249,115,22,0.3)]",
+    transition: "border-accent/20 hover:border-accent/40",
     "lux-machina": "border-border hover:border-border-bright",
+  };
+
+  const statusColors = {
+    sjc: "bg-status-active",
+    transition: "bg-status-warning",
+    "lux-machina": "bg-text-dim",
   };
 
   const eraLabels = {
     sjc: "SJC",
     transition: "Transition",
-    "lux-machina": "Lux Machina Era",
+    "lux-machina": "Lux Machina",
   };
 
   const content = (
     <article
-      className={`group relative p-6 border bg-surface rounded-lg transition-all duration-300 ${eraStyles[credit.era]}`}
+      className={`group relative p-6 border bg-surface/50 rounded transition-all duration-300 ${eraStyles[credit.era]}`}
     >
       <div className="flex flex-col gap-4">
         <header>
           <div className="flex items-start justify-between gap-4">
-            <h3 className="text-lg font-semibold text-foreground group-hover:text-led-cyan transition-colors">
-              {credit.title}
-            </h3>
-            <span className="shrink-0 text-xs font-mono text-text-dim px-2 py-1 bg-surface-elevated rounded">
+            <div className="flex items-center gap-2">
+              <span 
+                className={`w-1.5 h-1.5 rounded-full ${statusColors[credit.era]}`} 
+                aria-hidden="true" 
+              />
+              <h3 className="text-base font-mono font-semibold text-foreground group-hover:text-accent transition-colors">
+                {credit.title}
+              </h3>
+            </div>
+            <span className="shrink-0 text-xs font-mono text-text-dim px-2 py-1 bg-surface-elevated rounded border border-border">
               {credit.year}
             </span>
           </div>
-          <p className="mt-1 text-sm text-text-muted">{credit.platform}</p>
+          <p className="mt-1 text-xs font-mono text-text-muted uppercase tracking-wider ml-3.5">
+            {credit.platform}
+          </p>
         </header>
 
-        <div className="space-y-2">
-          <p className="text-sm font-medium text-foreground">{credit.role}</p>
+        <div className="space-y-2 ml-3.5">
+          <p className="text-sm font-mono text-accent">{credit.role}</p>
           <p className="text-sm text-text-muted leading-relaxed">
             {credit.description}
           </p>
         </div>
 
-        <footer className="pt-2 border-t border-border">
-          <span className="text-xs font-mono text-text-dim uppercase tracking-wider">
-            {eraLabels[credit.era]}
-          </span>
+        <footer className="pt-3 border-t border-border ml-3.5">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-mono text-text-dim uppercase tracking-widest">
+              {eraLabels[credit.era]}
+            </span>
+            {credit.era === "sjc" && (
+              <span className="text-xs font-mono text-status-active uppercase tracking-wider">
+                Active
+              </span>
+            )}
+          </div>
         </footer>
       </div>
-
-      {credit.era === "sjc" && (
-        <div
-          className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-led-cyan to-transparent rounded-l-lg"
-          aria-hidden="true"
-        />
-      )}
     </article>
   );
 
   if (showLink) {
     return (
-      <Link href="/work" className="block focus-ring rounded-lg">
+      <Link href="/work" className="block focus-ring rounded">
         {content}
       </Link>
     );

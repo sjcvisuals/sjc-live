@@ -16,19 +16,22 @@ export default function WorkPage() {
 
   return (
     <>
-      <section className="py-24 border-b border-border" aria-labelledby="work-hero">
+      <section className="py-24 border-b border-border tech-grid" aria-labelledby="work-hero">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <header className="max-w-3xl">
-            <p className="text-sm font-mono text-led-cyan uppercase tracking-widest mb-4">
-              Work
-            </p>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-8 h-px bg-accent" aria-hidden="true" />
+              <p className="text-xs font-mono text-text-muted uppercase tracking-[0.2em]">
+                Work
+              </p>
+            </div>
             <h1
               id="work-hero"
-              className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground"
+              className="text-4xl sm:text-5xl font-mono font-bold tracking-tight text-foreground leading-[1.1]"
             >
-              Tools and supervision for
+              Tools and supervision
               <br />
-              <span className="text-gradient">real productions</span>
+              <span className="text-gradient">for real productions</span>
             </h1>
             <p className="mt-6 text-lg text-text-muted leading-relaxed max-w-2xl">
               These are the productions Spencer Chase has worked on as VP
@@ -40,23 +43,25 @@ export default function WorkPage() {
       </section>
 
       <section
-        className="py-16 bg-surface"
+        className="py-16 bg-surface/50"
         aria-labelledby="sjc-credits-heading"
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <header className="mb-12">
-            <h2
-              id="sjc-credits-heading"
-              className="text-sm font-mono text-text-muted uppercase tracking-widest mb-2"
-            >
-              SJC / Recent
-            </h2>
-            <p className="text-2xl font-semibold text-foreground">
+            <div className="flex items-center gap-4 mb-3">
+              <span className="w-2 h-2 rounded-full bg-status-active" aria-hidden="true" />
+              <h2
+                id="sjc-credits-heading"
+                className="text-xs font-mono text-text-muted uppercase tracking-[0.2em]"
+              >
+                SJC / Active
+              </h2>
+            </div>
+            <p className="text-2xl font-mono font-semibold text-foreground">
               Current work as SJCVisuals
             </p>
             <p className="mt-2 text-text-muted">
-              Client-side VP supervision and tooling, independent of specific
-              volume operators.
+              Client-side VP supervision and tooling, independent of specific volume operators.
             </p>
           </header>
 
@@ -74,13 +79,16 @@ export default function WorkPage() {
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <header className="mb-12">
-            <h2
-              id="lux-credits-heading"
-              className="text-sm font-mono text-text-muted uppercase tracking-widest mb-2"
-            >
-              Lux Machina Era
-            </h2>
-            <p className="text-2xl font-semibold text-foreground">
+            <div className="flex items-center gap-4 mb-3">
+              <span className="w-2 h-2 rounded-full bg-text-dim" aria-hidden="true" />
+              <h2
+                id="lux-credits-heading"
+                className="text-xs font-mono text-text-muted uppercase tracking-[0.2em]"
+              >
+                Lux Machina Era
+              </h2>
+            </div>
+            <p className="text-2xl font-mono font-semibold text-foreground">
               Previous work as Engine TD
             </p>
             <p className="mt-2 text-text-muted">
@@ -97,13 +105,15 @@ export default function WorkPage() {
         </div>
       </section>
 
-      <section className="py-16 border-t border-border bg-surface">
+      <section className="py-16 border-t border-border bg-surface/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <h2 className="text-sm font-mono text-text-muted uppercase tracking-widest mb-4">
-              Important Note
-            </h2>
-            <div className="space-y-4 text-text-muted">
+          <div className="max-w-2xl p-6 border border-border rounded bg-background">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-xs font-mono text-text-dim uppercase tracking-widest">
+                {"//"} Note
+              </span>
+            </div>
+            <div className="space-y-4 text-text-muted text-sm">
               <p>
                 Credits listed are personal work by Spencer Chase as VP
                 Supervisor or Engine TD. Role titles reflect the actual position
@@ -111,13 +121,10 @@ export default function WorkPage() {
               </p>
               <p>
                 SJC does not claim credit for productions where Spencer was
-                employed by another company — those roles are clearly marked as
-                Lux Machina era or similar.
+                employed by another company — those roles are clearly marked.
               </p>
-              <p className="text-sm text-text-dim">
-                No client logos, production stills, or copyrighted imagery are
-                displayed without permission. All project details are factual
-                credits.
+              <p className="text-text-dim font-mono text-xs">
+                No client logos, production stills, or copyrighted imagery displayed.
               </p>
             </div>
           </div>
