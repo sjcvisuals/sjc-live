@@ -47,7 +47,7 @@ export function LEDVolumeHero() {
       initializeCells(rect.width, rect.height);
     };
 
-    const cellSize = 20;
+    const cellSize = 8;
     const gap = 2;
 
     const initializeCells = (width: number, height: number) => {
@@ -71,20 +71,20 @@ export function LEDVolumeHero() {
       const rect = canvas.getBoundingClientRect();
       ctx.clearRect(0, 0, rect.width, rect.height);
 
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+      const centerX = rect.width * 0.3;
+      const centerY = rect.height * 0.4;
 
       cellsRef.current.forEach((cell) => {
         const distFromCenter = Math.sqrt(
           Math.pow(cell.x - centerX, 2) + Math.pow(cell.y - centerY, 2)
         );
-        const maxDist = Math.sqrt(centerX * centerX + centerY * centerY);
-        const normalizedDist = distFromCenter / maxDist;
+        const maxDist = Math.sqrt(rect.width * rect.width + rect.height * rect.height) * 0.5;
+        const normalizedDist = Math.min(distFromCenter / maxDist, 1);
         
-        const brightness = Math.max(0.02, 0.15 * (1 - normalizedDist * 0.8));
+        const brightness = Math.max(0.03, 0.2 * (1 - normalizedDist * 0.9));
         
-        ctx.fillStyle = `rgba(34, 211, 238, ${brightness})`;
-        ctx.fillRect(cell.x, cell.y, cellSize - gap, cellSize - gap);
+        ctx.fillStyle = `rgba(249, 115, 22, ${brightness})`;
+        ctx.fillRect(cell.x, cell.y, cellSize, cellSize);
       });
     };
 
@@ -96,43 +96,48 @@ export function LEDVolumeHero() {
 
       const rect = canvas.getBoundingClientRect();
       ctx.clearRect(0, 0, rect.width, rect.height);
-      timeRef.current += 0.015;
+      timeRef.current += 0.008;
 
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+      const centerX = rect.width * 0.3;
+      const centerY = rect.height * 0.4;
 
       cellsRef.current.forEach((cell) => {
         const distFromCenter = Math.sqrt(
           Math.pow(cell.x - centerX, 2) + Math.pow(cell.y - centerY, 2)
         );
-        const maxDist = Math.sqrt(centerX * centerX + centerY * centerY);
-        const normalizedDist = distFromCenter / maxDist;
+        const maxDist = Math.sqrt(rect.width * rect.width + rect.height * rect.height) * 0.5;
+        const normalizedDist = Math.min(distFromCenter / maxDist, 1);
 
-        const wave1 = Math.sin(timeRef.current * 0.5 + normalizedDist * 4) * 0.5 + 0.5;
-        const wave2 = Math.sin(timeRef.current * 0.3 - normalizedDist * 3 + Math.PI) * 0.5 + 0.5;
-        const pulse = Math.sin(timeRef.current * 0.8) * 0.3 + 0.7;
+        const wave1 = Math.sin(timeRef.current * 0.4 + normalizedDist * 6) * 0.5 + 0.5;
+        const wave2 = Math.sin(timeRef.current * 0.25 - cell.x * 0.01 + cell.y * 0.005) * 0.5 + 0.5;
+        const dataStream = Math.sin(timeRef.current * 2 + cell.y * 0.1) > 0.95 ? 0.4 : 0;
 
         cell.targetBrightness = 
-          (wave1 * 0.4 + wave2 * 0.3) * pulse * (1 - normalizedDist * 0.6);
+          (wave1 * 0.3 + wave2 * 0.2 + dataStream) * (1 - normalizedDist * 0.7);
 
-        if (Math.random() < 0.001) {
-          cell.targetBrightness = Math.min(1, cell.targetBrightness + 0.5);
+        if (Math.random() < 0.0005) {
+          cell.targetBrightness = Math.min(1, cell.targetBrightness + 0.6);
         }
 
-        cell.brightness += (cell.targetBrightness - cell.brightness) * 0.08;
+        cell.brightness += (cell.targetBrightness - cell.brightness) * 0.06;
         cell.brightness = Math.max(0.02, Math.min(1, cell.brightness));
 
-        const hue = 185 + normalizedDist * 30;
-        const saturation = 80 + cell.brightness * 20;
-        const lightness = 30 + cell.brightness * 40;
+        const alpha = cell.brightness * 0.9 + 0.05;
+        
+        if (cell.brightness > 0.5) {
+          ctx.fillStyle = `rgba(251, 146, 60, ${alpha})`;
+        } else if (cell.brightness > 0.2) {
+          ctx.fillStyle = `rgba(249, 115, 22, ${alpha})`;
+        } else {
+          ctx.fillStyle = `rgba(194, 65, 12, ${alpha * 0.6})`;
+        }
+        
+        ctx.fillRect(cell.x, cell.y, cellSize, cellSize);
 
-        ctx.fillStyle = `hsla(${hue}, ${saturation}%, ${lightness}%, ${cell.brightness * 0.8 + 0.1})`;
-        ctx.fillRect(cell.x, cell.y, cellSize - gap, cellSize - gap);
-
-        if (cell.brightness > 0.6) {
-          ctx.shadowColor = `hsla(${hue}, ${saturation}%, ${lightness}%, 0.5)`;
-          ctx.shadowBlur = 10;
-          ctx.fillRect(cell.x, cell.y, cellSize - gap, cellSize - gap);
+        if (cell.brightness > 0.7) {
+          ctx.shadowColor = `rgba(249, 115, 22, 0.6)`;
+          ctx.shadowBlur = 12;
+          ctx.fillRect(cell.x, cell.y, cellSize, cellSize);
           ctx.shadowBlur = 0;
         }
       });
@@ -162,10 +167,11 @@ export function LEDVolumeHero() {
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
-        style={{ opacity: 0.6 }}
+        style={{ opacity: 0.7 }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background opacity-50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background/80" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </div>
   );
 }
