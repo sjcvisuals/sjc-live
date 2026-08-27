@@ -1,10 +1,33 @@
 import Link from "next/link";
 import { LEDVolumeHero } from "@/components/LEDVolumeHero";
 import { WorkCard } from "@/components/WorkCard";
-import { credits, offers } from "@/lib/data";
+import { credits } from "@/lib/data";
+
+const offers = [
+  {
+    number: "01",
+    title: "Supervision",
+    description:
+      "Client-side VP supervision that bridges production needs with technical reality. One person embedded with your team.",
+  },
+  {
+    number: "02",
+    title: "Full Delivery",
+    description:
+      "Environment creation, volume operation, screen content, and custom pipelines. The team scales to fit the job.",
+  },
+  {
+    number: "03",
+    title: "Tools & Pipelines",
+    description:
+      "Custom software, rendering pipelines, and automation built for your specific workflow.",
+  },
+];
 
 export default function Home() {
-  const featuredCredits = credits.filter((c) => c.featured).slice(0, 3);
+  const featuredCredits = credits.filter(
+    (c) => c.id === "hijack-s2" || c.id === "sony-monster-hunter" || c.id === "black-doves"
+  );
 
   return (
     <>
@@ -19,19 +42,21 @@ export default function Home() {
             <div className="flex items-center gap-3 mb-6">
               <span className="w-2 h-2 rounded-full bg-status-active" aria-hidden="true" />
               <p className="text-xs font-mono text-text-muted uppercase tracking-[0.2em]">
-                Virtual Production Specialist
+                Virtual Production
               </p>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-mono font-bold tracking-tight text-foreground leading-[1.1]">
-              Tools and supervision
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1]">
+              VP supervision and delivery
               <br />
-              <span className="text-gradient">for LED volume production</span>
+              <span className="text-gradient">that scales with your production</span>
             </h1>
             <p className="mt-6 text-lg text-text-muted max-w-xl leading-relaxed animate-fade-in-delay-1">
-              Custom tool creation, media-server pre-programming, and client-side VP supervision.
+              From a single supervisor embedded with your team to full environment 
+              creation, volume operation, and custom pipelines. The scope matches 
+              what you actually need.
             </p>
-            <p className="mt-2 text-sm font-mono text-text-dim animate-fade-in-delay-1">
-              Spencer Chase — London, UK
+            <p className="mt-3 text-sm font-mono text-text-dim animate-fade-in-delay-1">
+              Spencer Chase · London, UK
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-in-delay-2">
@@ -39,13 +64,13 @@ export default function Home() {
                 href="/work"
                 className="inline-flex items-center justify-center px-6 py-3 text-sm font-mono uppercase tracking-wider bg-accent text-background rounded hover:bg-accent-bright transition-colors focus-ring"
               >
-                View Work
+                See the Work
               </Link>
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center px-6 py-3 text-sm font-mono uppercase tracking-wider border border-border text-foreground rounded hover:bg-surface-elevated hover:border-border-bright transition-colors focus-ring"
               >
-                Get in Touch
+                Start a Conversation
               </Link>
             </div>
           </div>
@@ -62,8 +87,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* What we do */}
       <section
-        className="py-24 border-t border-border bg-surface/50 tech-grid"
+        className="py-24 border-t border-border bg-surface/50"
         aria-labelledby="offers-heading"
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -73,22 +99,22 @@ export default function Home() {
               id="offers-heading"
               className="text-xs font-mono text-text-muted uppercase tracking-[0.2em]"
             >
-              Services
+              How we work
             </h2>
           </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {offers.map((offer) => (
               <article key={offer.number} className="group">
                 <div className="flex items-baseline gap-4 mb-4">
                   <span className="text-5xl font-mono font-bold text-accent/20 group-hover:text-accent/40 transition-colors">
                     {offer.number}
                   </span>
-                  <h3 className="text-xl font-mono font-semibold text-foreground">
-                    {offer.title}
-                  </h3>
                 </div>
-                <p className="text-text-muted leading-relaxed pl-[4.5rem]">
+                <h3 className="text-xl font-semibold text-foreground mb-3">
+                  {offer.title}
+                </h3>
+                <p className="text-text-muted leading-relaxed">
                   {offer.description}
                 </p>
               </article>
@@ -96,16 +122,28 @@ export default function Home() {
           </div>
 
           <div className="mt-16 pt-8 border-t border-border">
-            <p className="text-sm font-mono text-text-dim max-w-2xl">
-              <span className="text-accent">→</span> Not a content studio. Not VAD packages. Not a volume operator.
-              <span className="block mt-2 text-text-muted">
-                Specialist tooling and supervision for productions and vendors working with LED ICVFX, Pixera, and Unreal workflows.
-              </span>
-            </p>
+            <div className="flex flex-col md:flex-row md:items-start gap-8">
+              <div className="md:w-1/2">
+                <p className="text-text-muted leading-relaxed">
+                  SJC has delivered full VP workflows — environment creation with 
+                  expanded teams, on-site volume operation, shot supervision with 
+                  filming crews, and custom Unreal rendering pipelines. But not 
+                  every job needs all of that.
+                </p>
+              </div>
+              <div className="md:w-1/2">
+                <p className="text-text-muted leading-relaxed">
+                  Sometimes a production just needs someone who understands both 
+                  the creative vision and the technical reality of LED volumes. 
+                  The scope scales to fit.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Selected work */}
       <section
         className="py-24 border-t border-border"
         aria-labelledby="work-heading"
@@ -122,8 +160,8 @@ export default function Home() {
                   Selected Work
                 </h2>
               </div>
-              <p className="text-2xl font-mono font-semibold text-foreground">
-                Recent VP supervision credits
+              <p className="text-2xl font-semibold text-foreground">
+                Recent projects
               </p>
             </div>
             <Link
@@ -136,12 +174,13 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredCredits.map((credit) => (
-              <WorkCard key={credit.id} credit={credit} showLink />
+              <WorkCard key={credit.id} credit={credit} />
             ))}
           </div>
         </div>
       </section>
 
+      {/* CTA */}
       <section
         className="py-24 border-t border-border bg-surface/50"
         aria-labelledby="cta-heading"
@@ -162,13 +201,13 @@ export default function Home() {
               </div>
               <h2
                 id="cta-heading"
-                className="text-3xl sm:text-4xl font-mono font-bold text-foreground"
+                className="text-3xl sm:text-4xl font-bold text-foreground"
               >
-                Working on a virtual production?
+                Got a production that needs VP support?
               </h2>
               <p className="mt-4 text-lg text-text-muted">
-                Whether you need custom tools, media-server prep, or client-side
-                supervision — let&apos;s discuss how SJC can support your production.
+                Whether it&apos;s a supervisor for your next series or a team to 
+                deliver a complete VP workflow — let&apos;s figure out the right scope.
               </p>
               <div className="mt-8">
                 <Link
