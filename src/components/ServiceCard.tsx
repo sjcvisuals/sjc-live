@@ -10,14 +10,17 @@ interface ServiceCardProps {
   index: number;
 }
 
-function ServiceIcon({ type }: { type: string }) {
-  const baseClasses = "w-8 h-8 text-accent";
+const iconColors = ["#f97316", "#8b5cf6", "#14b8a6"];
+
+function ServiceIcon({ type, color }: { type: string; color: string }) {
+  const baseClasses = "w-7 h-7";
 
   switch (type) {
     case "tools":
       return (
         <svg
           className={baseClasses}
+          style={{ color }}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -35,6 +38,7 @@ function ServiceIcon({ type }: { type: string }) {
       return (
         <svg
           className={baseClasses}
+          style={{ color }}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -52,6 +56,7 @@ function ServiceIcon({ type }: { type: string }) {
       return (
         <svg
           className={baseClasses}
+          style={{ color }}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -71,23 +76,22 @@ function ServiceIcon({ type }: { type: string }) {
 }
 
 export function ServiceCard({ service, index }: ServiceCardProps) {
-  const indexPadded = String(index + 1).padStart(2, "0");
+  const color = iconColors[index % iconColors.length];
 
   return (
-    <article className="group relative p-8 border border-border bg-surface/30 rounded hover:border-accent/30 hover:shadow-[0_0_40px_-15px_rgba(249,115,22,0.2)] transition-all duration-300">
-      <div className="absolute top-6 right-6 text-6xl font-mono font-bold text-border/50 group-hover:text-accent/10 transition-colors select-none">
-        {indexPadded}
-      </div>
-      
-      <header className="flex items-start gap-4 mb-6 relative">
-        <div className="p-2.5 bg-accent/10 rounded border border-accent/20 group-hover:border-accent/40 transition-colors">
-          <ServiceIcon type={service.icon} />
+    <article className="group relative p-8 bg-surface border border-border rounded-2xl transition-all duration-300 hover:border-border-bright card-shadow hover:card-shadow-hover">
+      <header className="flex items-start gap-4 mb-6">
+        <div 
+          className="p-3 rounded-xl"
+          style={{ backgroundColor: `${color}15` }}
+        >
+          <ServiceIcon type={service.icon} color={color} />
         </div>
         <div>
-          <h3 className="text-lg font-mono font-semibold text-foreground">
+          <h3 className="text-lg font-bold text-foreground">
             {service.title}
           </h3>
-          <p className="text-xs font-mono text-accent uppercase tracking-wider mt-1">
+          <p className="text-sm text-text-dim mt-0.5">
             {service.subtitle}
           </p>
         </div>
@@ -97,18 +101,16 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
         {service.description}
       </p>
 
-      <div className="border-t border-border pt-6">
-        <p className="text-xs font-mono text-text-dim uppercase tracking-widest mb-4">
-          Capabilities
-        </p>
-        <ul className="space-y-2" role="list">
+      <div className="pt-5 border-t border-border">
+        <ul className="space-y-2.5" role="list">
           {service.features.map((feature, i) => (
             <li
               key={i}
-              className="flex items-start gap-3 text-sm text-text-muted font-mono"
+              className="flex items-start gap-3 text-sm text-text-muted"
             >
               <span
-                className="shrink-0 w-1 h-1 mt-2 bg-accent rounded-full"
+                className="shrink-0 w-1.5 h-1.5 mt-1.5 rounded-full"
+                style={{ backgroundColor: color }}
                 aria-hidden="true"
               />
               {feature}

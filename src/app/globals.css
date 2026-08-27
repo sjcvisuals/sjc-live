@@ -1,22 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --background: #09090b;
-  --foreground: #fafafa;
+  --background: #fafafa;
+  --foreground: #18181b;
   --accent: #f97316;
   --accent-bright: #fb923c;
-  --accent-dim: #c2410c;
-  --surface: #0c0c0e;
-  --surface-elevated: #18181b;
-  --border: #27272a;
-  --border-bright: #3f3f46;
-  --text-muted: #a1a1aa;
+  --accent-dim: #ea580c;
+  --accent-light: #ffedd5;
+  --surface: #ffffff;
+  --surface-elevated: #f4f4f5;
+  --border: #e4e4e7;
+  --border-bright: #d4d4d8;
+  --text-muted: #52525b;
   --text-dim: #71717a;
-  --status-active: #22c55e;
+  --status-active: #16a34a;
   --status-warning: #f97316;
-  --status-error: #ef4444;
-  --grid-line: rgba(249, 115, 22, 0.04);
-  --glow-orange: rgba(249, 115, 22, 0.15);
+  --status-error: #dc2626;
+  --grid-line: rgba(249, 115, 22, 0.08);
+  --glow-orange: rgba(249, 115, 22, 0.2);
+  
+  /* Colorful accents for variety */
+  --color-blue: #3b82f6;
+  --color-purple: #8b5cf6;
+  --color-pink: #ec4899;
+  --color-teal: #14b8a6;
+  --color-green: #22c55e;
 }
 
 @theme inline {
@@ -25,6 +33,7 @@
   --color-accent: var(--accent);
   --color-accent-bright: var(--accent-bright);
   --color-accent-dim: var(--accent-dim);
+  --color-accent-light: var(--accent-light);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
   --color-border: var(--border);
@@ -35,6 +44,11 @@
   --color-status-warning: var(--status-warning);
   --color-status-error: var(--status-error);
   --color-glow-orange: var(--glow-orange);
+  --color-blue: var(--color-blue);
+  --color-purple: var(--color-purple);
+  --color-pink: var(--color-pink);
+  --color-teal: var(--color-teal);
+  --color-green: var(--color-green);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -84,10 +98,15 @@ body {
 .tech-grid {
   background-image: 
     linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(rgba(249, 115, 22, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(249, 115, 22, 0.02) 1px, transparent 1px);
-  background-size: 32px 32px, 32px 32px, 128px 128px, 128px 128px;
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.gradient-mesh {
+  background: 
+    radial-gradient(at 20% 20%, rgba(249, 115, 22, 0.15) 0%, transparent 50%),
+    radial-gradient(at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(at 40% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 50%);
 }
 
 .data-readout {
@@ -110,7 +129,15 @@ body {
 }
 
 .glow-border {
-  box-shadow: 0 0 0 1px var(--border), 0 0 20px -5px var(--glow-orange);
+  box-shadow: 0 0 0 1px var(--border), 0 4px 20px -5px var(--glow-orange);
+}
+
+.card-shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card-shadow-hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(249, 115, 22, 0.12);
 }
 
 .scanline {
@@ -183,14 +210,14 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent) 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.text-gradient-subtle {
-  background: linear-gradient(135deg, var(--foreground) 0%, var(--text-muted) 100%);
+.text-gradient-colorful {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--color-pink) 50%, var(--color-purple) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

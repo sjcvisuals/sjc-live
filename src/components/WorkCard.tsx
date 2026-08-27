@@ -17,93 +17,62 @@ export function WorkCard({ credit, featured = false }: WorkCardProps) {
 
   return (
     <article
-      className={`group relative overflow-hidden border border-border bg-surface/30 rounded transition-all duration-300 hover:border-border-bright ${
+      className={`group relative overflow-hidden bg-surface border border-border rounded-2xl transition-all duration-300 hover:border-border-bright card-shadow hover:card-shadow-hover ${
         featured ? "md:col-span-2" : ""
       }`}
-      style={{
-        boxShadow: `0 0 0 0 ${credit.color}00`,
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 0 40px -10px ${credit.color}40`;
-        (e.currentTarget as HTMLElement).style.borderColor = `${credit.color}50`;
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 0 0 0 ${credit.color}00`;
-        (e.currentTarget as HTMLElement).style.borderColor = "";
-      }}
     >
-      {/* Visual header strip */}
+      {/* Colorful top accent */}
       <div 
-        className="h-2 w-full"
+        className="h-1.5 w-full"
         style={{ backgroundColor: credit.color }}
         aria-hidden="true"
       />
       
-      {/* Abstract visual block - represents the production */}
+      {/* Visual header with gradient */}
       <div 
-        className="relative h-32 overflow-hidden"
+        className="relative h-36 overflow-hidden"
         style={{ 
-          background: `linear-gradient(135deg, ${credit.color}15 0%, transparent 60%)`,
+          background: `linear-gradient(135deg, ${credit.color}15 0%, ${credit.color}05 100%)`,
         }}
         aria-hidden="true"
       >
-        {/* Grid pattern overlay */}
+        {/* Decorative circles */}
         <div 
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: `
-              linear-gradient(${credit.color}20 1px, transparent 1px),
-              linear-gradient(90deg, ${credit.color}20 1px, transparent 1px)
-            `,
-            backgroundSize: "20px 20px",
-          }}
+          className="absolute -right-12 -top-12 w-48 h-48 rounded-full opacity-20"
+          style={{ backgroundColor: credit.color }}
+        />
+        <div 
+          className="absolute right-20 top-8 w-16 h-16 rounded-full opacity-10"
+          style={{ backgroundColor: credit.color }}
         />
         
-        {/* Diagonal accent lines */}
+        {/* Project initial */}
         <div 
-          className="absolute -right-8 -top-8 w-32 h-32 opacity-20"
-          style={{
-            background: `repeating-linear-gradient(
-              45deg,
-              ${credit.color},
-              ${credit.color} 2px,
-              transparent 2px,
-              transparent 12px
-            )`,
-          }}
-        />
-        
-        {/* Project initial as large background element */}
-        <div 
-          className="absolute right-4 bottom-0 text-8xl font-mono font-bold leading-none opacity-10 select-none"
+          className="absolute right-6 bottom-2 text-7xl font-bold leading-none opacity-[0.08] select-none"
           style={{ color: credit.color }}
         >
           {credit.title.charAt(0)}
         </div>
         
         {/* Year badge */}
-        <div className="absolute top-4 left-4">
+        <div className="absolute top-4 left-5">
           <span 
-            className="inline-block px-2 py-1 text-xs font-mono rounded"
+            className="inline-block px-3 py-1.5 text-xs font-semibold rounded-full"
             style={{ 
-              backgroundColor: `${credit.color}20`,
-              color: credit.color,
+              backgroundColor: credit.color,
+              color: "white",
             }}
           >
             {credit.year}
           </span>
         </div>
         
-        {/* Team size indicator if applicable */}
+        {/* Team size indicator */}
         {credit.teamSize && (
-          <div className="absolute top-4 right-4 flex items-center gap-1.5">
-            <span className="text-xs font-mono text-text-dim">Team</span>
+          <div className="absolute top-4 right-5 flex items-center gap-2">
+            <span className="text-xs text-text-dim">Team</span>
             <span 
-              className="px-1.5 py-0.5 text-xs font-mono rounded"
-              style={{ 
-                backgroundColor: `${credit.color}20`,
-                color: credit.color,
-              }}
+              className="px-2 py-1 text-xs font-semibold rounded-full bg-surface border border-border"
             >
               {credit.teamSize}
             </span>
@@ -114,23 +83,21 @@ export function WorkCard({ credit, featured = false }: WorkCardProps) {
       {/* Content */}
       <div className="p-6">
         <header className="mb-4">
-          <div className="flex items-start justify-between gap-4 mb-2">
-            <h3 className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors">
-              {credit.title}
-            </h3>
-          </div>
-          <div className="flex items-center gap-3 text-sm">
-            <span className="font-mono text-text-muted">{credit.client}</span>
-            <span className="text-text-dim">·</span>
+          <h3 className="text-xl font-bold text-foreground group-hover:text-accent transition-colors mb-1">
+            {credit.title}
+          </h3>
+          <div className="flex items-center gap-2 text-sm">
+            <span className="text-text-muted font-medium">{credit.client}</span>
+            <span className="text-border-bright">·</span>
             <span className="text-text-dim">{categoryLabels[credit.category]}</span>
           </div>
         </header>
 
         <div className="mb-4">
           <span 
-            className="inline-block px-2 py-1 text-xs font-mono rounded border"
+            className="inline-block px-3 py-1 text-xs font-medium rounded-full"
             style={{ 
-              borderColor: `${credit.color}40`,
+              backgroundColor: `${credit.color}15`,
               color: credit.color,
             }}
           >
@@ -138,7 +105,7 @@ export function WorkCard({ credit, featured = false }: WorkCardProps) {
           </span>
         </div>
 
-        <p className="text-text-muted leading-relaxed mb-6">
+        <p className="text-text-muted leading-relaxed mb-5">
           {credit.description}
         </p>
 
@@ -150,7 +117,7 @@ export function WorkCard({ credit, featured = false }: WorkCardProps) {
                 className="flex items-start gap-3 text-sm text-text-muted"
               >
                 <span
-                  className="shrink-0 w-1 h-1 mt-2 rounded-full"
+                  className="shrink-0 w-1.5 h-1.5 mt-1.5 rounded-full"
                   style={{ backgroundColor: credit.color }}
                   aria-hidden="true"
                 />

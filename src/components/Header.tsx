@@ -16,7 +16,7 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border bg-surface/90 backdrop-blur-md">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8"
         aria-label="Main navigation"
@@ -26,10 +26,10 @@ export function Header() {
           className="flex items-center gap-3 focus-ring rounded group"
           aria-label="SJC Home"
         >
-          <span className="text-xl font-bold tracking-tight font-mono">SJC</span>
+          <span className="text-xl font-bold tracking-tight text-accent">SJC</span>
           <span className="hidden sm:flex items-center gap-2 text-text-dim text-xs font-mono uppercase tracking-widest">
             <span className="w-1.5 h-1.5 rounded-full bg-status-active" aria-hidden="true" />
-            sjc.live
+            Online
           </span>
         </Link>
 
@@ -40,9 +40,9 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 text-sm font-mono uppercase tracking-wider rounded transition-colors focus-ring ${
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-colors focus-ring ${
                   isActive
-                    ? "text-accent bg-accent/10"
+                    ? "text-foreground bg-accent-light"
                     : "text-text-muted hover:text-foreground hover:bg-surface-elevated"
                 }`}
                 aria-current={isActive ? "page" : undefined}
@@ -56,7 +56,7 @@ export function Header() {
               href="https://www.signl.store"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 text-xs font-mono text-text-dim hover:text-text-muted transition-colors focus-ring rounded uppercase tracking-wider"
+              className="px-3 py-1.5 text-xs font-mono text-text-dim hover:text-accent transition-colors focus-ring rounded"
               aria-label="SIGNL Store (opens in new tab)"
             >
               SIGNL ↗
@@ -109,9 +109,9 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`block px-4 py-3 text-sm font-mono uppercase tracking-wider rounded transition-colors focus-ring ${
+                  className={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors focus-ring ${
                     isActive
-                      ? "text-accent bg-accent/10"
+                      ? "text-foreground bg-accent-light"
                       : "text-text-muted hover:text-foreground hover:bg-surface-elevated"
                   }`}
                   aria-current={isActive ? "page" : undefined}
@@ -126,7 +126,7 @@ export function Header() {
                 href="https://www.signl.store"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block px-4 py-3 text-xs font-mono text-text-dim hover:text-text-muted transition-colors focus-ring rounded uppercase tracking-wider"
+                className="block px-4 py-3 text-xs font-mono text-text-dim hover:text-accent transition-colors focus-ring rounded"
                 aria-label="SIGNL Store (opens in new tab)"
               >
                 SIGNL ↗

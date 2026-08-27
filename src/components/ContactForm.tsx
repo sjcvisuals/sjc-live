@@ -39,19 +39,19 @@ export function ContactForm() {
 
   if (!contactEmail) {
     return (
-      <div className="p-6 border border-border rounded bg-background">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="w-2 h-2 rounded-full bg-status-warning" aria-hidden="true" />
-          <span className="text-xs font-mono text-text-dim uppercase tracking-widest">
+      <div className="p-6 bg-accent-light border border-accent/20 rounded-xl">
+        <div className="flex items-center gap-3 mb-3">
+          <span className="w-2 h-2 rounded-full bg-accent" aria-hidden="true" />
+          <span className="text-sm font-medium text-accent">
             Configuration Required
           </span>
         </div>
-        <p className="text-text-muted mb-4">
+        <p className="text-text-muted mb-3">
           Contact form is currently unavailable.
         </p>
-        <p className="text-sm text-text-dim font-mono">
+        <p className="text-sm text-text-dim">
           Set{" "}
-          <code className="px-1.5 py-0.5 bg-surface-elevated rounded text-xs border border-border">
+          <code className="px-1.5 py-0.5 bg-surface rounded text-xs border border-border">
             NEXT_PUBLIC_CONTACT_EMAIL
           </code>{" "}
           environment variable to enable.
@@ -62,28 +62,28 @@ export function ContactForm() {
 
   if (formState === "success") {
     return (
-      <div className="p-6 border border-accent/30 rounded bg-background glow-border">
-        <div className="flex items-center gap-3 mb-4">
+      <div className="p-6 bg-green-50 border border-green-200 rounded-xl">
+        <div className="flex items-center gap-3 mb-3">
           <span className="w-2 h-2 rounded-full bg-status-active" aria-hidden="true" />
-          <span className="text-xs font-mono text-text-dim uppercase tracking-widest">
+          <span className="text-sm font-medium text-status-active">
             Email Client Opening
           </span>
         </div>
-        <p className="text-lg font-mono font-semibold text-foreground mb-2">
+        <p className="text-lg font-semibold text-foreground mb-2">
           Opening your email client...
         </p>
         <p className="text-text-muted">
           If it didn&apos;t open, email directly:{" "}
           <a
             href={`mailto:${contactEmail}`}
-            className="text-accent hover:text-accent-bright transition-colors focus-ring rounded font-mono"
+            className="text-accent hover:text-accent-dim transition-colors focus-ring rounded font-medium"
           >
             {contactEmail}
           </a>
         </p>
         <button
           onClick={() => setFormState("idle")}
-          className="mt-4 text-sm font-mono text-text-muted hover:text-foreground transition-colors focus-ring rounded"
+          className="mt-4 text-sm text-text-muted hover:text-foreground transition-colors focus-ring rounded"
         >
           ← Send another message
         </button>
@@ -92,12 +92,12 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label
             htmlFor="name"
-            className="block text-xs font-mono text-text-dim uppercase tracking-wider mb-2"
+            className="block text-sm font-medium text-foreground mb-2"
           >
             Name <span className="text-accent">*</span>
           </label>
@@ -107,7 +107,7 @@ export function ContactForm() {
             name="name"
             required
             autoComplete="name"
-            className="w-full px-4 py-3 bg-background border border-border rounded font-mono text-foreground placeholder-text-dim focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+            className="w-full px-4 py-3 bg-surface border border-border rounded-lg text-foreground placeholder-text-dim focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
             placeholder="Your name"
           />
         </div>
@@ -115,7 +115,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="email"
-            className="block text-xs font-mono text-text-dim uppercase tracking-wider mb-2"
+            className="block text-sm font-medium text-foreground mb-2"
           >
             Email <span className="text-accent">*</span>
           </label>
@@ -125,7 +125,7 @@ export function ContactForm() {
             name="email"
             required
             autoComplete="email"
-            className="w-full px-4 py-3 bg-background border border-border rounded font-mono text-foreground placeholder-text-dim focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+            className="w-full px-4 py-3 bg-surface border border-border rounded-lg text-foreground placeholder-text-dim focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
             placeholder="you@example.com"
           />
         </div>
@@ -134,7 +134,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="company"
-          className="block text-xs font-mono text-text-dim uppercase tracking-wider mb-2"
+          className="block text-sm font-medium text-foreground mb-2"
         >
           Company / Production
         </label>
@@ -143,7 +143,7 @@ export function ContactForm() {
           id="company"
           name="company"
           autoComplete="organization"
-          className="w-full px-4 py-3 bg-background border border-border rounded font-mono text-foreground placeholder-text-dim focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+          className="w-full px-4 py-3 bg-surface border border-border rounded-lg text-foreground placeholder-text-dim focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
           placeholder="Production company or vendor"
         />
       </div>
@@ -151,7 +151,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="projectType"
-          className="block text-xs font-mono text-text-dim uppercase tracking-wider mb-2"
+          className="block text-sm font-medium text-foreground mb-2"
         >
           Project Type <span className="text-accent">*</span>
         </label>
@@ -159,10 +159,11 @@ export function ContactForm() {
           id="projectType"
           name="projectType"
           required
-          className="w-full px-4 py-3 bg-background border border-border rounded font-mono text-foreground focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+          className="w-full px-4 py-3 bg-surface border border-border rounded-lg text-foreground focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
         >
           <option value="">Select an option</option>
           <option value="VP Supervision">VP Supervision</option>
+          <option value="Full VP Delivery">Full VP Delivery</option>
           <option value="Custom Tools">Custom Tool Development</option>
           <option value="Media Server Programming">Media Server Programming</option>
           <option value="Consultation">Consultation / Tech Scoping</option>
@@ -173,7 +174,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="block text-xs font-mono text-text-dim uppercase tracking-wider mb-2"
+          className="block text-sm font-medium text-foreground mb-2"
         >
           Message <span className="text-accent">*</span>
         </label>
@@ -182,14 +183,14 @@ export function ContactForm() {
           name="message"
           required
           rows={5}
-          className="w-full px-4 py-3 bg-background border border-border rounded font-mono text-foreground placeholder-text-dim focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"
+          className="w-full px-4 py-3 bg-surface border border-border rounded-lg text-foreground placeholder-text-dim focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all resize-none"
           placeholder="Project details, timeline, what support you're looking for..."
         />
       </div>
 
       {formState === "error" && (
-        <div className="p-4 border border-status-error/30 rounded bg-status-error/5">
-          <p className="text-sm text-status-error font-mono">
+        <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+          <p className="text-sm text-status-error">
             Something went wrong. Please try again or email directly.
           </p>
         </div>
@@ -198,12 +199,12 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={formState === "submitting"}
-        className="w-full sm:w-auto px-8 py-3 text-sm font-mono uppercase tracking-wider bg-accent text-background rounded hover:bg-accent-bright transition-colors focus-ring disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full sm:w-auto px-8 py-3 text-sm font-semibold bg-accent text-white rounded-lg hover:bg-accent-dim transition-colors focus-ring disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {formState === "submitting" ? "Opening..." : "Send Message"}
       </button>
 
-      <p className="text-xs text-text-dim font-mono">
+      <p className="text-xs text-text-dim">
         Opens your email client with a pre-filled message. Data is not stored.
       </p>
     </form>
