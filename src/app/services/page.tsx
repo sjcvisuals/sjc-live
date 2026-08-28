@@ -6,7 +6,7 @@ import { services } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Virtual production services: custom tool creation, media-server pre-programming (Pixera, Unreal, LED ICVFX), and client-side VP supervision.",
+    "Virtual production services: custom tool development, technical consulting, media-server programming, and VP supervision.",
 };
 
 export default function ServicesPage() {
@@ -25,13 +25,12 @@ export default function ServicesPage() {
               id="services-hero"
               className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1]"
             >
-              What a producer or{" "}
-              <span className="text-gradient">vendor actually buys</span>
+              Tools, consulting, and{" "}
+              <span className="text-gradient">VP supervision</span>
             </h1>
             <p className="mt-6 text-lg text-text-muted leading-relaxed max-w-2xl">
-              Three core offerings: custom tools for your pipeline, media-server
-              prep and support, and production-side VP supervision. No volume
-              rental, no content creation, no endless revisions.
+              Technical expertise for virtual production. From custom software 
+              and pipeline development to hands-on supervision and full VP delivery.
             </p>
           </header>
         </div>
@@ -63,7 +62,7 @@ export default function ServicesPage() {
               Process
             </h2>
             <p className="text-2xl font-bold text-foreground">
-              Engagement model
+              How engagements typically work
             </p>
           </header>
 
@@ -74,9 +73,9 @@ export default function ServicesPage() {
               </h3>
               <ul className="space-y-5" role="list">
                 {[
-                  { step: "01", title: "Discovery", desc: "VP requirements, timeline, existing vendor relationships" },
-                  { step: "02", title: "Scope", desc: "Define deliverables: tools, prep, supervision, or combination" },
-                  { step: "03", title: "Delivery", desc: "Pre-production prep, on-set support, or ongoing servicing" },
+                  { step: "01", title: "Discovery", desc: "Understand your VP requirements, timeline, and existing vendor relationships" },
+                  { step: "02", title: "Scope", desc: "Define what you need — tools, consulting, supervision, or a combination" },
+                  { step: "03", title: "Delivery", desc: "Pre-production work, on-set support, or ongoing technical involvement" },
                 ].map((item) => (
                   <li key={item.step} className="flex gap-4">
                     <span className="shrink-0 w-8 h-8 flex items-center justify-center bg-accent text-white rounded-lg text-xs font-bold">
@@ -96,9 +95,9 @@ export default function ServicesPage() {
               </h3>
               <ul className="space-y-5" role="list">
                 {[
-                  { step: "01", title: "Requirements", desc: "Tools or showfile work you need support with" },
+                  { step: "01", title: "Requirements", desc: "Tools, pipeline work, or technical support you need" },
                   { step: "02", title: "Engagement", desc: "Day rate or project-based, flexible to your timeline" },
-                  { step: "03", title: "Handoff", desc: "Deliverables with documentation, ready for your team" },
+                  { step: "03", title: "Handoff", desc: "Deliverables with documentation, ready for your team to deploy" },
                 ].map((item) => (
                   <li key={item.step} className="flex gap-4">
                     <span className="shrink-0 w-8 h-8 flex items-center justify-center bg-purple-500 text-white rounded-lg text-xs font-bold">
@@ -118,30 +117,21 @@ export default function ServicesPage() {
       <section className="py-16 border-t border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h2 className="text-sm font-semibold text-status-error uppercase tracking-wider mb-2">
-              Out of Scope
+            <h2 className="text-2xl font-bold text-foreground mb-6">
+              The technical background
             </h2>
-            <p className="text-2xl font-bold text-foreground mb-6">
-              What SJC does not do
-            </p>
-            <div className="space-y-3">
-              {[
-                { label: "Content studio", desc: "No environments, assets, or creative content" },
-                { label: "VAD packages", desc: "No virtual art department services" },
-                { label: "Camera house", desc: "No camera rentals or tracking systems" },
-                { label: "Volume operator", desc: "No stage, no LED wall, no VP facility" },
-                { label: "Client-review loops", desc: "Technical delivery, not creative iteration" },
-              ].map((item) => (
-                <div key={item.label} className="flex items-start gap-4 p-4 bg-red-50 border border-red-100 rounded-xl">
-                  <span className="shrink-0 w-6 h-6 flex items-center justify-center text-status-error text-sm font-bold">
-                    ✕
-                  </span>
-                  <div>
-                    <span className="font-semibold text-foreground">{item.label}</span>
-                    <span className="text-text-muted"> — {item.desc}</span>
-                  </div>
-                </div>
-              ))}
+            <div className="space-y-4 text-text-muted leading-relaxed">
+              <p>
+                This work comes from years on VP stages — as an Engine TD at Lux Machina 
+                working on productions like House of the Dragon, Hijack, and Masters of 
+                the Air, and as a VP TD at Third Floor. That background means understanding 
+                not just the technology, but the real constraints and pressures of a live set.
+              </p>
+              <p>
+                Now as SJC, that expertise is available directly to productions and vendors 
+                who need custom tools built, technical problems solved, or someone who can 
+                bridge the gap between creative intent and VP technology.
+              </p>
             </div>
           </div>
         </div>
@@ -151,17 +141,11 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 p-8 bg-surface border border-border rounded-2xl card-shadow">
             <div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-2 h-2 rounded-full bg-status-active" aria-hidden="true" />
-                <span className="text-sm font-medium text-status-active">
-                  Available
-                </span>
-              </div>
               <h2 className="text-xl font-bold text-foreground">
-                Ready to discuss your project?
+                Have a technical challenge?
               </h2>
               <p className="mt-1 text-text-muted">
-                Let&apos;s talk about how SJC can support your virtual production.
+                Whether it&apos;s a tool that needs building or a workflow that needs fixing.
               </p>
             </div>
             <Link

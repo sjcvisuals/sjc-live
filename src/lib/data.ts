@@ -7,8 +7,8 @@ export interface CreditItem {
   role: string;
   description: string;
   highlights: string[];
-  teamSize?: string;
   color: string;
+  image?: string;
 }
 
 export const credits: CreditItem[] = [
@@ -18,17 +18,16 @@ export const credits: CreditItem[] = [
     client: "Apple TV+",
     year: "2026",
     category: "film-tv",
-    role: "VP Supervisor + Content Delivery",
+    role: "VP Supervisor + Content Pipeline",
     description:
-      "Client-side virtual production supervision across the full series, plus in-house content creation for LED screens. For the complex aircraft environments in episodes 7 & 8, the SJC team expanded to deliver hero environments and a custom Unreal rendering pipeline producing accurate files for the LED walls.",
+      "Client-side virtual production supervision across the full series, plus custom content creation pipeline for LED screens. Built a bespoke Unreal rendering system to produce accurate files for the LED walls on complex aircraft environments.",
     highlights: [
-      "Client-side VP supervision for entire series",
-      "Screen content creation throughout production",
-      "Team of 3 for complex Ep 7 & 8 environments",
-      "Custom Unreal rendering pipeline for LED wall accuracy",
+      "Custom Unreal rendering pipeline",
+      "Screen content creation system",
+      "Client-side VP supervision",
     ],
-    teamSize: "1–3",
     color: "#f97316",
+    image: "/images/hijack.jpg",
   },
   {
     id: "sony-monster-hunter",
@@ -38,15 +37,14 @@ export const credits: CreditItem[] = [
     category: "commercial",
     role: "Full VP Delivery",
     description:
-      "Complete virtual production delivery for the Sony commercial — from environment creation through on-site operation and shot supervision. SJC managed the entire VP workflow: building environments with a team of 3, operating the volume on shoot days, and working directly with the filming team to ensure every shot landed.",
+      "Complete virtual production delivery for the Sony commercial — environment creation, volume operation, and shot supervision. Built the environments, ran the tech on set, and worked with the filming team to land every shot.",
     highlights: [
-      "Full VP workflow ownership",
-      "Environment creation with team of 3",
-      "On-site volume operation",
-      "Shot supervision with filming team",
+      "Environment creation",
+      "On-set volume operation",
+      "Shot supervision",
     ],
-    teamSize: "3",
     color: "#22c55e",
+    image: "/images/monster-hunter.jpg",
   },
   {
     id: "down-cemetery-road",
@@ -56,13 +54,13 @@ export const credits: CreditItem[] = [
     category: "film-tv",
     role: "VP Supervisor",
     description:
-      "Virtual production supervision for the Apple TV+ series produced with 60Forty Films. Technical oversight bridging production requirements with VP technology delivery.",
+      "Virtual production supervision for the Apple TV+ series. Technical oversight bridging production requirements with VP technology delivery.",
     highlights: [
-      "Production-side technical supervision",
+      "Production-side supervision",
       "Vendor coordination",
-      "Workflow optimization",
     ],
     color: "#3b82f6",
+    image: "/images/down-cemetery-road.jpg",
   },
   {
     id: "douglas-is-cancelled",
@@ -74,10 +72,11 @@ export const credits: CreditItem[] = [
     description:
       "Named virtual production supervisor for the ITV drama. Managing the technical interface between production needs and LED volume capabilities.",
     highlights: [
-      "Named VP Supervisor credit",
-      "Technical production interface",
+      "Named VP Supervisor",
+      "Technical interface",
     ],
     color: "#a855f7",
+    image: "/images/douglas-is-cancelled.jpg",
   },
   {
     id: "black-doves",
@@ -87,12 +86,13 @@ export const credits: CreditItem[] = [
     category: "film-tv",
     role: "VP Supervisor",
     description:
-      "Virtual production supervision for the Netflix original series. Ensuring technical delivery aligned with creative vision across LED volume shoots.",
+      "Virtual production supervision for the Netflix original series. Technical delivery aligned with creative vision across LED volume shoots.",
     highlights: [
-      "Netflix original series",
-      "VP technical supervision",
+      "Netflix original",
+      "VP supervision",
     ],
     color: "#ef4444",
+    image: "/images/black-doves.jpg",
   },
   {
     id: "silo",
@@ -104,10 +104,10 @@ export const credits: CreditItem[] = [
     description:
       "Virtual production supervision for the Apple TV+ sci-fi series, handling the technical complexity of the show's distinctive underground environments.",
     highlights: [
-      "Apple TV+ sci-fi series",
       "Complex environment supervision",
     ],
     color: "#6366f1",
+    image: "/images/silo.jpg",
   },
   {
     id: "house-of-the-dragon",
@@ -119,10 +119,10 @@ export const credits: CreditItem[] = [
     description:
       "Unreal Engine technical direction for the Game of Thrones prequel series, handling real-time rendering and engine-side technical challenges.",
     highlights: [
-      "HBO flagship production",
       "Unreal Engine TD",
     ],
     color: "#eab308",
+    image: "/images/house-of-the-dragon.jpg",
   },
   {
     id: "masters-of-the-air",
@@ -134,10 +134,10 @@ export const credits: CreditItem[] = [
     description:
       "Unreal Engine technical direction for the World War II limited series, managing complex aerial and combat environment rendering.",
     highlights: [
-      "Apple TV+ limited series",
       "Aerial environment rendering",
     ],
     color: "#14b8a6",
+    image: "/images/masters-of-the-air.jpg",
   },
   {
     id: "godzilla-x-kong",
@@ -150,9 +150,10 @@ export const credits: CreditItem[] = [
       "Unreal Engine technical direction for the MonsterVerse feature film, handling large-scale creature and environment rendering for LED volumes.",
     highlights: [
       "Feature film",
-      "Large-scale environment rendering",
+      "Large-scale rendering",
     ],
     color: "#f43f5e",
+    image: "/images/godzilla-x-kong.jpg",
   },
   {
     id: "amazon-bloom",
@@ -165,7 +166,6 @@ export const credits: CreditItem[] = [
       "Commercial shoot at ARRI Stage, delivering Unreal Engine technical direction for the Amazon brand campaign.",
     highlights: [
       "ARRI Stage London",
-      "Brand campaign",
     ],
     color: "#f97316",
   },
@@ -179,7 +179,6 @@ export const credits: CreditItem[] = [
     description:
       "Commercial production at ARRI Stage, handling Unreal Engine technical direction for the Uber campaign.",
     highlights: [
-      "ARRI Stage London",
       "Commercial campaign",
     ],
     color: "#000000",
@@ -189,66 +188,48 @@ export const credits: CreditItem[] = [
 export const services = [
   {
     id: "custom-tools",
-    title: "Custom Tool Creation",
-    subtitle: "Built for your pipeline",
+    title: "Custom Tools & Pipelines",
+    subtitle: "Software built for your production",
     description:
-      "Purpose-built tools for virtual production workflows. Showfile generators, OSC controllers, pipeline utilities, and automation that integrates with your existing tech stack.",
+      "Bespoke tools that solve real problems in your VP workflow. From showfile generators to rendering pipelines to control interfaces — if your production needs it and it doesn't exist, we build it.",
     features: [
-      "Showfile generation and management",
-      "OSC and DMX control interfaces",
-      "Pipeline automation scripts",
-      "Custom UI panels for operators",
-      "Integration with Pixera, Unreal, and LED processors",
+      "Custom rendering pipelines (Unreal, nDisplay)",
+      "Showfile generation and automation",
+      "OSC/DMX control interfaces",
+      "Pipeline tools and scripts",
+      "Operator UI panels",
     ],
     icon: "tools",
   },
   {
-    id: "media-server",
-    title: "Media Server Programming",
-    subtitle: "Pixera, Unreal, LED ICVFX",
+    id: "tech-consulting",
+    title: "Technical Consulting",
+    subtitle: "Expertise before and during production",
     description:
-      "Pre-programming and on-set servicing for media servers. From initial configuration to live show support, handling the technical complexity so productions can focus on creativity.",
+      "Deep technical knowledge of LED ICVFX, media servers, and real-time rendering — available for production planning, vendor selection, workflow design, or troubleshooting when things go sideways.",
     features: [
-      "Pixera server setup and programming",
-      "Unreal Engine integration",
-      "LED processor configuration",
-      "Calibration and colour management",
-      "Pre-vis to final delivery pipeline",
+      "VP workflow design",
+      "Vendor evaluation and selection",
+      "Technical specification",
+      "Pre-production planning",
+      "On-set troubleshooting",
     ],
-    icon: "server",
+    icon: "consulting",
   },
   {
     id: "vp-supervision",
-    title: "VP Supervision",
-    subtitle: "Client-side, production-focused",
+    title: "VP Supervision & Delivery",
+    subtitle: "From oversight to full execution",
     description:
-      "Client-side virtual production supervision for productions and vendors. Technical oversight that bridges the gap between production needs and VP technology, without the volume operator overhead.",
+      "Client-side supervision that bridges production and technology. Or full VP delivery — environment creation, volume operation, content pipelines — when you need more than just oversight.",
     features: [
-      "Technical supervision and troubleshooting",
-      "Vendor coordination and communication",
-      "Workflow optimization",
-      "On-set technical support",
-      "Production-side representation",
+      "Client-side VP supervision",
+      "Environment creation",
+      "On-set volume operation",
+      "Content pipeline management",
+      "Vendor coordination",
     ],
     icon: "monitor",
-  },
-];
-
-export const offers = [
-  {
-    number: "01",
-    title: "Custom Tools",
-    description: "Purpose-built software for virtual production pipelines",
-  },
-  {
-    number: "02",
-    title: "Media Server",
-    description: "Pre-programming and servicing for Pixera, Unreal, LED ICVFX",
-  },
-  {
-    number: "03",
-    title: "VP Supervision",
-    description: "Client-side supervision and production-side servicing",
   },
 ];
 

@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with SJC for virtual production tools, media-server programming, and VP supervision. London area / UK.",
+    "Get in touch with SJC for VP tools, technical consulting, and supervision. London / UK.",
 };
 
 export default function ContactPage() {
@@ -24,12 +24,11 @@ export default function ContactPage() {
               className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1]"
             >
               Let&apos;s talk about{" "}
-              <span className="text-gradient">your production</span>
+              <span className="text-gradient">your project</span>
             </h1>
             <p className="mt-6 text-lg text-text-muted leading-relaxed max-w-2xl">
-              Whether you&apos;re a producer scoping VP requirements, a vendor
-              looking for tooling support, or just want to discuss a potential
-              collaboration — reach out.
+              Whether you need custom tools built, technical consulting, or 
+              hands-on VP support — reach out and we can figure out the right approach.
             </p>
           </header>
         </div>
@@ -68,21 +67,21 @@ export default function ContactPage() {
                     Response Time
                   </h3>
                   <p className="text-text-muted">
-                    1–2 business days
+                    Usually within a day or two
                   </p>
                 </div>
 
                 <div className="p-5 bg-surface border border-border rounded-xl">
                   <h3 className="text-sm font-semibold text-foreground mb-3">
-                    Best For
+                    Good fit for
                   </h3>
                   <ul className="space-y-2" role="list">
                     {[
-                      "Client-side VP supervision",
-                      "Full VP delivery with expanded team",
-                      "Tool development and showfile work",
-                      "Pre-production planning and tech consultations",
-                      "Media-server programming and servicing",
+                      "Custom tool or pipeline development",
+                      "Technical consulting and workflow design",
+                      "VP supervision for series or features",
+                      "Full VP delivery including environments",
+                      "Troubleshooting and technical support",
                     ].map((item) => (
                       <li key={item} className="flex items-start gap-3 text-sm text-text-muted">
                         <span className="text-accent mt-0.5">→</span>

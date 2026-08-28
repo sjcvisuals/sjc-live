@@ -27,10 +27,6 @@ export function Header() {
           aria-label="SJC Home"
         >
           <span className="text-xl font-bold tracking-tight text-accent">SJC</span>
-          <span className="hidden sm:flex items-center gap-2 text-text-dim text-xs font-mono uppercase tracking-widest">
-            <span className="w-1.5 h-1.5 rounded-full bg-status-active" aria-hidden="true" />
-            Online
-          </span>
         </Link>
 
         <div className="hidden md:flex items-center gap-1">
