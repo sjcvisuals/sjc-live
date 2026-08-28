@@ -10,14 +10,17 @@ interface ServiceCardProps {
   index: number;
 }
 
-function ServiceIcon({ type }: { type: string }) {
-  const baseClasses = "w-8 h-8 text-accent";
+const iconColors = ["#f97316", "#8b5cf6", "#14b8a6"];
+
+function ServiceIcon({ type, color }: { type: string; color: string }) {
+  const baseClasses = "w-7 h-7";
 
   switch (type) {
     case "tools":
       return (
         <svg
           className={baseClasses}
+          style={{ color }}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -31,10 +34,11 @@ function ServiceIcon({ type }: { type: string }) {
           />
         </svg>
       );
-    case "server":
+    case "consulting":
       return (
         <svg
           className={baseClasses}
+          style={{ color }}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -44,7 +48,7 @@ function ServiceIcon({ type }: { type: string }) {
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z"
+            d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
           />
         </svg>
       );
@@ -52,6 +56,7 @@ function ServiceIcon({ type }: { type: string }) {
       return (
         <svg
           className={baseClasses}
+          style={{ color }}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -71,23 +76,22 @@ function ServiceIcon({ type }: { type: string }) {
 }
 
 export function ServiceCard({ service, index }: ServiceCardProps) {
-  const indexPadded = String(index + 1).padStart(2, "0");
+  const color = iconColors[index % iconColors.length];
 
   return (
-    <article className="group relative p-8 border border-border bg-surface/30 rounded hover:border-accent/30 hover:shadow-[0_0_40px_-15px_rgba(249,115,22,0.2)] transition-all duration-300">
-      <div className="absolute top-6 right-6 text-6xl font-mono font-bold text-border/50 group-hover:text-accent/10 transition-colors select-none">
-        {indexPadded}
-      </div>
-      
-      <header className="flex items-start gap-4 mb-6 relative">
-        <div className="p-2.5 bg-accent/10 rounded border border-accent/20 group-hover:border-accent/40 transition-colors">
-          <ServiceIcon type={service.icon} />
+    <article className="group relative p-8 bg-surface border border-border rounded-2xl transition-all duration-300 hover:border-border-bright card-shadow hover:card-shadow-hover">
+      <header className="flex items-start gap-4 mb-6">
+        <div 
+          className="p-3 rounded-xl"
+          style={{ backgroundColor: `${color}15` }}
+        >
+          <ServiceIcon type={service.icon} color={color} />
         </div>
         <div>
-          <h3 className="text-lg font-mono font-semibold text-foreground">
+          <h3 className="text-lg font-bold text-foreground">
             {service.title}
           </h3>
-          <p className="text-xs font-mono text-accent uppercase tracking-wider mt-1">
+          <p className="text-sm text-text-dim mt-0.5">
             {service.subtitle}
           </p>
         </div>
@@ -97,18 +101,16 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
         {service.description}
       </p>
 
-      <div className="border-t border-border pt-6">
-        <p className="text-xs font-mono text-text-dim uppercase tracking-widest mb-4">
-          Capabilities
-        </p>
-        <ul className="space-y-2" role="list">
+      <div className="pt-5 border-t border-border">
+        <ul className="space-y-2.5" role="list">
           {service.features.map((feature, i) => (
             <li
               key={i}
-              className="flex items-start gap-3 text-sm text-text-muted font-mono"
+              className="flex items-start gap-3 text-sm text-text-muted"
             >
               <span
-                className="shrink-0 w-1 h-1 mt-2 bg-accent rounded-full"
+                className="shrink-0 w-1.5 h-1.5 mt-1.5 rounded-full"
+                style={{ backgroundColor: color }}
                 aria-hidden="true"
               />
               {feature}

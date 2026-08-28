@@ -6,7 +6,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Virtual production work: full VP delivery, environment creation, on-set supervision, and content pipelines. From Apple TV+ series to Sony commercials.",
+    "Virtual production work: custom pipelines, environment creation, on-set supervision, and technical consulting. From Apple TV+ series to Sony commercials.",
 };
 
 export default function WorkPage() {
@@ -22,52 +22,44 @@ export default function WorkPage() {
   return (
     <>
       {/* Hero */}
-      <section className="py-24 border-b border-border" aria-labelledby="work-hero">
+      <section className="py-20 border-b border-border gradient-mesh" aria-labelledby="work-hero">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <header className="max-w-3xl">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-8 h-px bg-accent" aria-hidden="true" />
-              <p className="text-xs font-mono text-text-muted uppercase tracking-[0.2em]">
-                Work
-              </p>
-            </div>
+            <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-3">
+              Work
+            </p>
             <h1
               id="work-hero"
               className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1]"
             >
-              From supervision to
-              <br />
-              <span className="text-gradient">full VP delivery</span>
+              Tools, pipelines, and{" "}
+              <span className="text-gradient">VP delivery</span>
             </h1>
             <p className="mt-6 text-lg text-text-muted leading-relaxed max-w-2xl">
-              SJC scales to fit the job. Sometimes that&apos;s a single supervisor embedded 
-              with your production. Sometimes it&apos;s a team delivering environments, 
-              operating the volume, and building custom pipelines. Here&apos;s a sample of 
-              what we&apos;ve shipped.
+              Custom rendering pipelines. Bespoke automation. Environment creation. 
+              On-set supervision. The scope varies by project — here&apos;s a sample of 
+              what we&apos;ve delivered.
             </p>
           </header>
         </div>
       </section>
 
-      {/* Featured Projects - Full delivery */}
-      <section className="py-16 bg-surface/50" aria-labelledby="featured-heading">
+      {/* Featured Projects */}
+      <section className="py-16" aria-labelledby="featured-heading">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <header className="mb-12">
-            <div className="flex items-center gap-4 mb-3">
-              <span className="w-2 h-2 rounded-full bg-status-active" aria-hidden="true" />
-              <h2
-                id="featured-heading"
-                className="text-xs font-mono text-text-muted uppercase tracking-[0.2em]"
-              >
-                Featured
-              </h2>
-            </div>
-            <p className="text-2xl font-semibold text-foreground">
+          <header className="mb-10">
+            <h2
+              id="featured-heading"
+              className="text-sm font-semibold text-accent uppercase tracking-wider mb-2"
+            >
+              Featured
+            </h2>
+            <p className="text-2xl font-bold text-foreground">
               Full delivery projects
             </p>
-            <p className="mt-2 text-text-muted max-w-2xl">
-              Projects where SJC delivered more than supervision — environments, content, 
-              pipelines, and on-set operation with expanded teams.
+            <p className="mt-2 text-text-muted">
+              Projects involving custom pipelines, environment creation, or complete 
+              VP delivery — not just supervision.
             </p>
           </header>
 
@@ -80,23 +72,17 @@ export default function WorkPage() {
       </section>
 
       {/* Film & TV */}
-      <section className="py-16 border-t border-border" aria-labelledby="film-tv-heading">
+      <section className="py-16 border-t border-border bg-surface-elevated/50" aria-labelledby="film-tv-heading">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <header className="mb-12">
-            <div className="flex items-center gap-4 mb-3">
-              <span className="w-8 h-px bg-accent" aria-hidden="true" />
-              <h2
-                id="film-tv-heading"
-                className="text-xs font-mono text-text-muted uppercase tracking-[0.2em]"
-              >
-                {categories["film-tv"].label}
-              </h2>
-            </div>
-            <p className="text-2xl font-semibold text-foreground">
+          <header className="mb-10">
+            <h2
+              id="film-tv-heading"
+              className="text-sm font-semibold text-accent uppercase tracking-wider mb-2"
+            >
+              {categories["film-tv"].label}
+            </h2>
+            <p className="text-2xl font-bold text-foreground">
               Series & features
-            </p>
-            <p className="mt-2 text-text-muted">
-              {categories["film-tv"].description}
             </p>
           </header>
 
@@ -109,23 +95,17 @@ export default function WorkPage() {
       </section>
 
       {/* Commercial */}
-      <section className="py-16 border-t border-border bg-surface/50" aria-labelledby="commercial-heading">
+      <section className="py-16 border-t border-border" aria-labelledby="commercial-heading">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <header className="mb-12">
-            <div className="flex items-center gap-4 mb-3">
-              <span className="w-8 h-px bg-accent" aria-hidden="true" />
-              <h2
-                id="commercial-heading"
-                className="text-xs font-mono text-text-muted uppercase tracking-[0.2em]"
-              >
-                {categories["commercial"].label}
-              </h2>
-            </div>
-            <p className="text-2xl font-semibold text-foreground">
+          <header className="mb-10">
+            <h2
+              id="commercial-heading"
+              className="text-sm font-semibold text-accent uppercase tracking-wider mb-2"
+            >
+              {categories["commercial"].label}
+            </h2>
+            <p className="text-2xl font-bold text-foreground">
               Brand campaigns
-            </p>
-            <p className="mt-2 text-text-muted">
-              {categories["commercial"].description}
             </p>
           </header>
 
@@ -137,101 +117,21 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* What we deliver */}
-      <section className="py-16 border-t border-border">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-6">
-                What SJC actually delivers
-              </h2>
-              <div className="space-y-4 text-text-muted">
-                <p>
-                  The scope varies by project. For some productions, you need someone 
-                  who understands both the creative requirements and the technical 
-                  reality of LED volumes — a supervisor who can bridge that gap.
-                </p>
-                <p>
-                  For others, you need a team that can build environments, operate 
-                  the volume on set, create screen content throughout the shoot, and 
-                  deliver custom rendering pipelines when the standard approach won&apos;t 
-                  cut it.
-                </p>
-                <p>
-                  SJC does both. The team scales up when the job needs it and scales 
-                  back down when it doesn&apos;t.
-                </p>
-              </div>
-            </div>
-            
-            <div className="space-y-6">
-              <div className="p-6 border border-border rounded bg-surface/30">
-                <h3 className="text-lg font-semibold text-foreground mb-4">
-                  Supervision
-                </h3>
-                <ul className="space-y-2 text-sm text-text-muted">
-                  <li className="flex items-start gap-3">
-                    <span className="text-accent mt-0.5">→</span>
-                    Client-side VP supervision
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-accent mt-0.5">→</span>
-                    Vendor coordination
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-accent mt-0.5">→</span>
-                    Technical troubleshooting
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-accent mt-0.5">→</span>
-                    Shot supervision with filming team
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="p-6 border border-border rounded bg-surface/30">
-                <h3 className="text-lg font-semibold text-foreground mb-4">
-                  Full delivery
-                </h3>
-                <ul className="space-y-2 text-sm text-text-muted">
-                  <li className="flex items-start gap-3">
-                    <span className="text-status-active mt-0.5">→</span>
-                    Environment creation (expanded team)
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-status-active mt-0.5">→</span>
-                    Screen content creation
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-status-active mt-0.5">→</span>
-                    Volume operation on set
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-status-active mt-0.5">→</span>
-                    Custom rendering pipelines
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
-      <section className="py-16 border-t border-border bg-surface/50">
+      <section className="py-16 border-t border-border bg-surface-elevated/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 p-8 border border-border rounded bg-background glow-border">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 p-8 bg-accent-light border border-accent/20 rounded-2xl">
             <div>
-              <h2 className="text-xl font-semibold text-foreground">
-                Got a project that needs VP support?
+              <h2 className="text-xl font-bold text-foreground">
+                Need custom tools or VP support?
               </h2>
               <p className="mt-1 text-text-muted">
-                Whether it&apos;s supervision or full delivery, let&apos;s talk scope.
+                Let&apos;s talk about what your production needs.
               </p>
             </div>
             <Link
               href="/contact"
-              className="shrink-0 inline-flex items-center justify-center px-6 py-3 text-sm font-mono uppercase tracking-wider bg-accent text-background rounded hover:bg-accent-bright transition-colors focus-ring"
+              className="shrink-0 inline-flex items-center justify-center px-6 py-3 text-sm font-semibold bg-accent text-white rounded-lg hover:bg-accent-dim transition-colors focus-ring"
             >
               Get in Touch
             </Link>
